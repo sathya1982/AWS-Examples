@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]; then
+        echo "There needs to be a bucket name"
+        exit 1
+fi
+
+#aws s3api create-bucket --bucket $1
+aws s3api delete-bucket \
+--bucket $1 \
+--output text
+#--delete-bucket-configuration="LocationConstraint=ca-central-1" 

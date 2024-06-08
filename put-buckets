@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+	echo "There needs to be atleast 1 argument, include bucket name"
+	exit 1
+fi
+
+if [ -z "$2" ]; then
+	echo "You need a filename, please provide one"
+	exit 1
+fi
+
+OBJECT_KEY=$(basename $2)
+
+aws s3api put-object \
+--bucket $1 \
+--body $2 \
+--key $OBJECT_KEY 
